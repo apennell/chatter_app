@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in?, only: [:show]
+  
   def index
   end
 
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :email_confirmation, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def find_user

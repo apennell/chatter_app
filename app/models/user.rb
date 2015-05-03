@@ -7,13 +7,16 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   validates_confirmation_of :password
-  validates_presence_of :password_digest
+  validates_presence_of :username, :email, :password, :password_digest
 
   def password=(unencrypted_password)
     if unencrypted_password.nil?
+      # when nil, password_degest is nil
       self.password_digest = nil
     else
+      # when not nil, update password for temp reference
       @password = unencrypted_password
+      # update password_digest using hashing algorithm
       self.password_digest = BCrypt::Password.create(@password)
     end
   end
