@@ -9,13 +9,17 @@ Rails.application.routes.draw do
 
   get "/logout", to: "sessions#destroy"
 
-  get "/posts", to: "posts#index"
+  get "/posts", to: "posts#index", as: "posts"
 
-  get "/posts/new", to: "posts#new"
+  get "/posts/new", to: "posts#new", as: "new_post"
 
-  get "/posts/:id", to: "posts#show"
+  get "/posts/:id", to: "posts#show", as: "post"
+
+  get "/posts/:id/edit", to: "posts#edit", as: "edit_article"
 
   post "/posts", to: "posts#create"
+
+  patch "/posts/:id", to: "posts#update"
 
   resources :users do
     resources :posts

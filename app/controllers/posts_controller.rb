@@ -22,5 +22,20 @@ class PostsController < ApplicationController
   end
 
   def edit
+    id = params[:id]
+    @post = Post.find(id)
+    render :edit
+  end
+
+  def update
+    post_id = params[:id]
+    post = Post.find(post_id)
+
+    # get updated data
+    updated_attributes = params.require(:post).permit(:content)
+    # update post
+    post.update_attributes(updated_attributes)
+
+    redirect_to "/posts/#{post_id}"
   end
 end
