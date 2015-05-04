@@ -9,6 +9,14 @@ Rails.application.routes.draw do
 
   get "/logout", to: "sessions#destroy"
 
+  get "/posts", to: "posts#index"
+
+  get "/posts/new", to: "posts#new"
+
+  get "/posts/:id", to: "posts#show"
+
+  post "/posts", to: "posts#create"
+
   resources :users do
     resources :posts
   end
