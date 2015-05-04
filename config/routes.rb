@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get "/sign_up", to: "users#new", as: "sign_up"
 
+  post "/users/:id/follow", to: "users#follow"
+
+  post "/users/:id/unfollow", to: "users#unfollow"
+
   get "/logout", to: "sessions#destroy"
 
   get "/posts", to: "posts#index", as: "posts"
@@ -25,6 +29,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts
+    member do
+      get :follow
+      get :unfollow
+    end
   end
 
 end

@@ -2,6 +2,9 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :posts
+  acts_as_followable
+  acts_as_follower
+
   BCrypt::Engine.cost = 12
 
   attr_reader :password
