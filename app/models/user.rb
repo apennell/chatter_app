@@ -30,8 +30,10 @@ class User < ActiveRecord::Base
   end
 
   def self.confirm(username_param, password_param)
-    user = User.find_by({username: username_param})
-    user.authenticate(password_param)    
+    user = User.find_by({username: username_param}) || nil
+    if user != nil
+      user.authenticate(password_param)
+    end   
   end
 
 end

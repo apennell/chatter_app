@@ -15,7 +15,11 @@ class SessionsController < ApplicationController
       # how it should be refactored instead of above line, but doesn't work:
       # login(user)
       redirect_to user_path(user.id)
+    elsif user == nil
+      flash[:error] = "Invalid username or password."
+      redirect_to "/login"
     else
+      flash[:error] = "Invalid username or password."
       redirect_to "/login"
     end
   end
