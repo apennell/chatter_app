@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: [:show]
+  before_action :logged_in?, only: [:index, :show]
   
   def index
+    @users = User.all
+    render :index
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def new

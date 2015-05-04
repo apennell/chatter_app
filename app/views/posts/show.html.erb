@@ -4,8 +4,11 @@
 <div>
   by <a href="/users/<%= current_user.id %>"><%= @post.user.username %><br></a>
   <%= @post.content %><br><br>
-  <a href="/posts/<%= @post.id %>/edit">Edit Post</a>
-  <%= button_to "Delete", @post, method: :delete %>
+  
+  <% if @post.user == current_user %>
+    <a href="/posts/<%= @post.id %>/edit">Edit Post</a>
+    <%= button_to "Delete", @post, method: :delete %>
+  <% end %>
 </div>
 
 

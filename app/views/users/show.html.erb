@@ -1,8 +1,19 @@
-<h1>Welcome, <%= current_user.username %>!</h1>
+<h1><%= @user.username %></h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<% @user.posts.each do |post| %>
+
+  <div>
+    <a href="/posts/<%= post.id %>"><%= post.content %></a>
+  </div>
+
+<% end %>
+
+<br><br>
 
 <a href="/">Home</a>
 <a href="/logout">Sign Out</a>
 <br>
+<a href="/users">View Users</a>
 <a href="/posts">View Posts</a>
 

@@ -26,13 +26,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # id = params[:id]
     @post = current_user.posts.find(params[:id])
     render :edit
   end
 
   def update
-    # post_id = params[:id]
     @post = current_user.posts.find(params[:id])
 
     # get updated data
@@ -44,7 +42,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # id = params[:id]
     @post = current_user.posts.find(params[:id])
     @post.destroy()
     redirect_to "/posts"

@@ -1,10 +1,20 @@
-<h1>Chatter!</h1>
-<p>Find me in app/views/sites/index.html.erb</p>
+<h1>Chatter</h1>
+<h3>Get chatting!</h3>
 
-<br><br>
-
-<a href="/users/new">Sign Up</a>
-<a href="/login">Sign In</a>
-<a href="/logout">Sign Out</a>
 <br>
+
+<% if current_user == nil %>
+  <a href="/users/new">Sign Up</a>
+  <a href="/login">Sign In</a>
+<% else %>
+  <a href="/logout">Sign Out</a>
+<% end %>
+
+<br>
+
+<% if current_user != nil %>
+  <a href="/users/<%= current_user.id %>">Profile</a>
+<% end %>
+
+<a href="/users">View Users</a>
 <a href="/posts">View Posts</a>
