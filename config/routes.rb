@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   patch "/posts/:id", to: "posts#update"
 
+  delete "/posts/:id", to: "posts#destroy"
+
   resources :users do
     resources :posts
   end

@@ -5,6 +5,7 @@
 
   <div>
     <a href="/posts/<%= post.id %>"><%= post.content %></a>
+    <%= button_to "Delete", post, method: :delete %>
     
   </div>
 
